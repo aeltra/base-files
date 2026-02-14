@@ -1,7 +1,7 @@
-ID=bondi
-NAME="Bondi OS"
-PRETTY_NAME="Bondi OS ##VERSION## (##CODENAME##)"
+ID=aeltra
+NAME="Aeltra OS"
+PRETTY_NAME="Aeltra OS ##VERSION## (##CODENAME##)"
 VERSION="##VERSION## (##CODENAME##)"
 VERSION_ID="##VERSION##"
 VERSION_CODENAME=##codename##
-HOME_URL="https://yaybondi.com"
+HOME_URL="https://aeltra.eu"
