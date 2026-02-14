@@ -21,11 +21,11 @@ fi
 # Fix the prompt.
 #
 if [ -f "/etc/target" ]; then
-    target_name=`cat /etc/target | grep '^TARGET_ID'      | cut -d'=' -f2`
-    target_mach=`cat /etc/target | grep '^TARGET_MACHINE' | cut -d'=' -f2`
+    target_name=`grep '^TARGET_ID'      /etc/target | cut -d'=' -f2`
+    target_mach=`grep '^TARGET_MACHINE' /etc/target | cut -d'=' -f2`
 
     if [ "`id -u`" -eq 0 ]; then
-        PS1="\u@$target_name($target_mach):\w\# \[\e]2;\u@$target_name($target_mach):\w\a\]"
+        PS1="\u@$target_name($target_mach):\w# \[\e]2;\u@$target_name($target_mach):\w\a\]"
     else
         PS1="\u@$target_name($target_mach):\w\$ \[\e]2;\u@$target_name($target_mach):\w\a\]"
     fi
@@ -34,14 +34,14 @@ if [ -f "/etc/target" ]; then
     unset target_mach
 else
     if [ "`id -u`" -eq 0 ]; then
-        PS1='\u@\h:\w\# \[\e]2;\u@$target_name($target_mach):\w\a\]'
+        PS1='\u@\h:\w# \[\e]2;\u@\h:\w\a\]'
     else
-        PS1='\u@\h:\w\$ \[\e]2;\u@$target_name($target_mach):\w\a\]'
+        PS1='\u@\h:\w\$ \[\e]2;\u@\h:\w\a\]'
     fi
 fi
 
 #
-# Read in addtional configuration files.
+# Read in additional configuration files.
 #
 if [ -d "/etc/profile.d" ]; then
   for script in /etc/profile.d/*.sh; do
