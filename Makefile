@@ -103,6 +103,8 @@ install-files:
 	install -m 644 etc/profile  $(DESTDIR)/etc/
 	install -m 644 etc/services $(DESTDIR)/etc/
 	./fill-template.sh >        $(DESTDIR)/etc/os-release
+	grep VERSION_ID $(DESTDIR)/etc/os-release | \
+		cut -d= -f2 | sed 's/"//g' > $(DESTDIR)/etc/aeltra_version
 
 tarball:
 	git archive --format=tar.gz --prefix=base-files-$(VERSION)/ \
